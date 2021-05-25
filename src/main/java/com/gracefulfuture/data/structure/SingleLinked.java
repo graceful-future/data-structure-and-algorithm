@@ -150,7 +150,13 @@ public class SingleLinked<T> {
         origin = null;
         nodeCount--;
     }
-
+    /**
+    * @description  获取指定位置上节点的数据
+    * @author       chenkun
+    * @param		index
+    * @date         2021/5/25 10:46
+    * @return		T
+    */
     public T getData(int index){
         if(index < 0 || index >= nodeCount){
             throw new IndexOutOfBoundsException();
