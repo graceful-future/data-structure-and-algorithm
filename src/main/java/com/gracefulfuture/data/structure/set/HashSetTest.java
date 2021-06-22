@@ -17,23 +17,25 @@ public class HashSetTest {
         //保证存储的元素有序性，所以HashSet中元素是无序的。
         //可以保存值为null的元素,元素不可重复
         HashSet<String> hashSet = new HashSet<>();
-        hashSet.add("hello");
-        hashSet.add("hello");
-        hashSet.add("world");
-        hashSet.add("welcome");
-        hashSet.add("age");
+        boolean flag1 = hashSet.add("hello");
+        boolean flag2 = hashSet.add("hello");
+        System.out.println(flag1);
+        System.out.println(flag2);
+//        hashSet.add("world");
+//        hashSet.add("welcome");
+//        hashSet.add("age");
 //        System.out.println(hashSet.size());
 //        System.out.println(hashSet);
-        hashSet.forEach(e -> System.out.println(e));
-        HashSet<Integer> hashSet2  = new HashSet<>();
-        hashSet2.add(5);
-        hashSet2.add(1);
-        hashSet2.add(2);
-        hashSet2.add(4);
-        hashSet2.add(3);
-        hashSet2.add(5);
-        hashSet2.add(null);
-        hashSet2.add(null);
-        hashSet2.forEach(e -> System.out.println(e));
+//        hashSet.forEach(e -> System.out.println(e));
+//        HashSet<Integer> hashSet2  = new HashSet<>();
+//        hashSet2.add(5);
+//        hashSet2.add(1);
+//        hashSet2.add(2);
+//        hashSet2.add(4);
+//        hashSet2.add(3);
+//        hashSet2.add(5);
+//        hashSet2.add(null);
+//        hashSet2.add(null);
+//        hashSet2.forEach(e -> System.out.println(e));
     }
 }
