@@ -1,11 +1,11 @@
 package com.gracefulfuture.data.structure.heap;
 
 /**
-* @description      二项堆
-* @author           chenkun
-* @create           2021/6/28 11:35
-* @version          1.0
-*/
+ * @author chenkun
+ * @version 1.0
+ * @description 二项堆
+ * @create 2021/6/28 11:35
+ */
 public class BinomialHeap<T extends Comparable<T>> {
 
     private BinomialNode<T> mRoot;    // 根结点
@@ -26,7 +26,7 @@ public class BinomialHeap<T extends Comparable<T>> {
         }
 
         public String toString() {
-            return "key:"+key;
+            return "key:" + key;
         }
     }
 
@@ -38,16 +38,16 @@ public class BinomialHeap<T extends Comparable<T>> {
      * 获取二项堆中的最小节点的键值
      */
     public T minimum() {
-        if (mRoot==null)
+        if (mRoot == null)
             return null;
 
         BinomialNode<T> x, prev_x;    // x是用来遍历的当前节点
         BinomialNode<T> y, prev_y;    // y是最小节点
 
-        prev_x  = mRoot;
-        x       = mRoot.next;
-        prev_y  = null;
-        y       = mRoot;
+        prev_x = mRoot;
+        x = mRoot.next;
+        prev_y = null;
+        y = mRoot;
         // 找到最小节点
         while (x != null) {
             if (x.key.compareTo(y.key) < 0) {
@@ -67,7 +67,7 @@ public class BinomialHeap<T extends Comparable<T>> {
      */
     private void link(BinomialNode<T> child, BinomialNode<T> root) {
         child.parent = root;
-        child.next   = root.child;
+        child.next = root.child;
         root.child = child;
         root.degree++;
     }
@@ -80,11 +80,11 @@ public class BinomialHeap<T extends Comparable<T>> {
         if (h2 == null) return h1;
 
         // root是新堆的根，h3用来遍历h1和h3的。
-        BinomialNode<T> pre_h3, h3, root=null;
+        BinomialNode<T> pre_h3, h3, root = null;
 
         pre_h3 = null;
         //整个while，h1, h2, pre_h3, h3都在往后顺移
-        while ((h1!=null) && (h2!=null)) {
+        while ((h1 != null) && (h2 != null)) {
 
             if (h1.degree <= h2.degree) {
                 h3 = h1;
@@ -123,11 +123,11 @@ public class BinomialHeap<T extends Comparable<T>> {
             return null;
 
         BinomialNode<T> prev_x = null;
-        BinomialNode<T> x      = root;
+        BinomialNode<T> x = root;
         BinomialNode<T> next_x = x.next;
         while (next_x != null) {
 
-            if (   (x.degree != next_x.degree)
+            if ((x.degree != next_x.degree)
                     || ((next_x.next != null) && (next_x.degree == next_x.next.degree))) {
                 // Case 1: x.degree != next_x.degree
                 // Case 2: x.degree == next_x.degree == next_x.next.degree
@@ -159,7 +159,7 @@ public class BinomialHeap<T extends Comparable<T>> {
      * 将二项堆other合并到当前堆中
      */
     public void union(BinomialHeap<T> other) {
-        if (other!=null && other.mRoot!=null)
+        if (other != null && other.mRoot != null)
             mRoot = union(mRoot, other.mRoot);
     }
 
@@ -170,14 +170,14 @@ public class BinomialHeap<T extends Comparable<T>> {
         BinomialNode<T> node;
 
         // 禁止插入相同的键值
-        if (contains(key)==true) {
+        if (contains(key) == true) {
             System.out.printf("insert failed: the key(%s) is existed already!\n", key);
-            return ;
+            return;
         }
 
         node = new BinomialNode<T>(key);
-        if (node==null)
-            return ;
+        if (node == null)
+            return;
 
         mRoot = union(mRoot, node);
     }
@@ -189,16 +189,16 @@ public class BinomialHeap<T extends Comparable<T>> {
         BinomialNode<T> next;
         BinomialNode<T> tail = null;
 
-        if (root==null)
+        if (root == null)
             return root;
 
         root.parent = null;
-        while (root.next!=null) {
-            next         = root.next;
-            root.next    = tail;
-            tail         = root;
-            root         = next;
-            root.parent  = null;
+        while (root.next != null) {
+            next = root.next;
+            root.next = tail;
+            tail = root;
+            root = next;
+            root.parent = null;
         }
         root.next = tail;
 
@@ -209,16 +209,16 @@ public class BinomialHeap<T extends Comparable<T>> {
      * 移除二项堆root中的最小节点，并返回删除节点后的二项树
      */
     private BinomialNode<T> extractMinimum(BinomialNode<T> root) {
-        if (root==null)
+        if (root == null)
             return root;
 
         BinomialNode<T> x, prev_x;    // x是用来遍历的当前节点
         BinomialNode<T> y, prev_y;    // y是最小节点
 
-        prev_x  = root;
-        x       = root.next;
+        prev_x = root;
+        x = root.next;
         prev_y = null;
-        y      = root;
+        y = root;
         // 找到最小节点
         while (x != null) {
             if (x.key.compareTo(y.key) < 0) {
@@ -254,16 +254,16 @@ public class BinomialHeap<T extends Comparable<T>> {
      * 减少关键字的值：将二项堆中的节点node的键值减小为key。
      */
     private void decreaseKey(BinomialNode<T> node, T key) {
-        if(key.compareTo(node.key)>=0 || contains(key)==true) {
-            System.out.println("decrease failed: the new key("+key+") is existed already, or is no smaller than current key("+node.key+")");
-            return ;
+        if (key.compareTo(node.key) >= 0 || contains(key) == true) {
+            System.out.println("decrease failed: the new key(" + key + ") is existed already, or is no smaller than current key(" + node.key + ")");
+            return;
         }
         node.key = key;
 
         BinomialNode<T> child, parent;
         child = node;
         parent = node.parent;
-        while(parent != null && child.key.compareTo(parent.key)<0) {
+        while (parent != null && child.key.compareTo(parent.key) < 0) {
             // 交换parent和child的数据
             T tmp = parent.key;
             parent.key = child.key;
@@ -278,9 +278,9 @@ public class BinomialHeap<T extends Comparable<T>> {
      * 增加关键字的值：将二项堆中的节点node的键值增加为key。
      */
     private void increaseKey(BinomialNode<T> node, T key) {
-        if(key.compareTo(node.key)<=0 || contains(key)==true) {
-            System.out.println("increase failed: the new key("+key+") is existed already, or is no greater than current key("+node.key+")");
-            return ;
+        if (key.compareTo(node.key) <= 0 || contains(key) == true) {
+            System.out.println("increase failed: the new key(" + key + ") is existed already, or is no greater than current key(" + node.key + ")");
+            return;
         }
         node.key = key;
 
@@ -288,12 +288,12 @@ public class BinomialHeap<T extends Comparable<T>> {
         BinomialNode<T> child = cur.child;
         while (child != null) {
 
-            if(cur.key.compareTo(child.key) > 0) {
+            if (cur.key.compareTo(child.key) > 0) {
                 // 如果"当前节点" < "它的左孩子"，
                 // 则在"它的孩子中(左孩子 和 左孩子的兄弟)"中，找出最小的节点；
                 // 然后将"最小节点的值" 和 "当前节点的值"进行互换
                 BinomialNode<T> least = child;    // least是child和它的兄弟中的最小节点
-                while(child.next != null) {
+                while (child.next != null) {
                     if (least.key.compareTo(child.next.key) > 0)
                         least = child.next;
                     child = child.next;
@@ -317,12 +317,12 @@ public class BinomialHeap<T extends Comparable<T>> {
      */
     private void updateKey(BinomialNode<T> node, T key) {
         if (node == null)
-            return ;
+            return;
 
         int cmp = key.compareTo(node.key);
-        if(cmp < 0)                            // key < node.key
+        if (cmp < 0)                            // key < node.key
             decreaseKey(node, key);
-        else if(cmp > 0)                    // key > node.key
+        else if (cmp > 0)                    // key > node.key
             increaseKey(node, key);
         else
             System.out.println("No need to update!!!");
@@ -351,7 +351,7 @@ public class BinomialHeap<T extends Comparable<T>> {
             if (parent.key.compareTo(key) == 0)
                 return parent;
             else {
-                if((child = search(parent.child, key)) != null)
+                if ((child = search(parent.child, key)) != null)
                     return child;
                 parent = parent.next;
             }
@@ -364,14 +364,14 @@ public class BinomialHeap<T extends Comparable<T>> {
      * 二项堆中是否包含键值key
      */
     public boolean contains(T key) {
-        return search(mRoot, key)!=null ? true : false;
+        return search(mRoot, key) != null ? true : false;
     }
 
     /*
      * 删除节点：删除键值为key的节点
      */
     private BinomialNode<T> remove(BinomialNode<T> root, T key) {
-        if (root==null)
+        if (root == null)
             return root;
 
         BinomialNode<T> node;
@@ -389,19 +389,19 @@ public class BinomialHeap<T extends Comparable<T>> {
             parent.key = tmp;
 
             // 下一个父节点
-            node   = parent;
+            node = parent;
             parent = node.parent;
         }
 
         // 找到node的前一个根节点(prev)
         BinomialNode<T> prev = null;
-        BinomialNode<T> pos  = root;
+        BinomialNode<T> pos = root;
         while (pos != node) {
             prev = pos;
-            pos  = pos.next;
+            pos = pos.next;
         }
         // 移除node节点
-        if (prev!=null)
+        if (prev != null)
             prev.next = node.next;
         else
             root = node.next;
@@ -428,9 +428,8 @@ public class BinomialHeap<T extends Comparable<T>> {
      *                    2，表示当前节点是一个兄弟节点。
      */
     private void print(BinomialNode<T> node, BinomialNode<T> prev, int direction) {
-        while(node != null)
-        {
-            if(direction==1)    // node是根节点
+        while (node != null) {
+            if (direction == 1)    // node是根节点
                 System.out.printf("\t%2d(%d) is %2d's child\n", node.key, node.degree, prev.key);
             else                // node是分支节点
                 System.out.printf("\t%2d(%d) is %2d's next\n", node.key, node.degree, prev.key);
@@ -447,7 +446,7 @@ public class BinomialHeap<T extends Comparable<T>> {
 
     public void print() {
         if (mRoot == null)
-            return ;
+            return;
 
         BinomialNode<T> p = mRoot;
         System.out.printf("== 二项堆( ");
@@ -457,7 +456,7 @@ public class BinomialHeap<T extends Comparable<T>> {
         }
         System.out.printf(")的详细信息：\n");
 
-        int i=0;
+        int i = 0;
         p = mRoot;
         while (p != null) {
             i++;

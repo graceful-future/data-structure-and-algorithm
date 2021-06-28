@@ -1,11 +1,11 @@
 package com.gracefulfuture.data.structure.heap;
 
 /**
-* @description      斜堆
-* @author           chenkun
-* @create           2021/6/23 14:23
-* @version          1.0
-*/
+ * @author chenkun
+ * @version 1.0
+ * @description 斜堆
+ * @create 2021/6/23 14:23
+ */
 public class SkewHeap<T extends Comparable<T>> {
 
     private SkewNode<T> mRoot;    // 根结点
@@ -22,7 +22,7 @@ public class SkewHeap<T extends Comparable<T>> {
         }
 
         public String toString() {
-            return "key:"+key;
+            return "key:" + key;
         }
     }
 
@@ -34,8 +34,8 @@ public class SkewHeap<T extends Comparable<T>> {
      * 前序遍历"斜堆"
      */
     private void preOrder(SkewNode<T> heap) {
-        if(heap != null) {
-            System.out.print(heap.key+" ");
+        if (heap != null) {
+            System.out.print(heap.key + " ");
             preOrder(heap.left);
             preOrder(heap.right);
         }
@@ -49,9 +49,9 @@ public class SkewHeap<T extends Comparable<T>> {
      * 中序遍历"斜堆"
      */
     private void inOrder(SkewNode<T> heap) {
-        if(heap != null) {
+        if (heap != null) {
             inOrder(heap.left);
-            System.out.print(heap.key+" ");
+            System.out.print(heap.key + " ");
             inOrder(heap.right);
         }
     }
@@ -64,11 +64,10 @@ public class SkewHeap<T extends Comparable<T>> {
      * 后序遍历"斜堆"
      */
     private void postOrder(SkewNode<T> heap) {
-        if(heap != null)
-        {
+        if (heap != null) {
             postOrder(heap.left);
             postOrder(heap.right);
-            System.out.print(heap.key+" ");
+            System.out.print(heap.key + " ");
         }
     }
 
@@ -80,16 +79,16 @@ public class SkewHeap<T extends Comparable<T>> {
      * 合并"斜堆x"和"斜堆y"
      */
     private SkewNode<T> merge(SkewNode<T> x, SkewNode<T> y) {
-        if(x == null) {
+        if (x == null) {
             return y;
         }
-        if(y == null) {
+        if (y == null) {
             return x;
         }
 
         // 合并x和y时，将x作为合并后的树的根；
         // 这里的操作是保证: x的key < y的key
-        if(x.key.compareTo(y.key) > 0) {
+        if (x.key.compareTo(y.key) > 0) {
             SkewNode<T> tmp = x;
             x = y;
             y = tmp;
@@ -115,7 +114,7 @@ public class SkewHeap<T extends Comparable<T>> {
      *     key 插入结点的键值
      */
     public void insert(T key) {
-        SkewNode<T> node = new SkewNode<T>(key,null,null);
+        SkewNode<T> node = new SkewNode<T>(key, null, null);
 
         // 如果新建结点失败，则返回。
         if (node != null) {
@@ -147,7 +146,7 @@ public class SkewHeap<T extends Comparable<T>> {
      * 销毁斜堆
      */
     private void destroy(SkewNode<T> heap) {
-        if (heap==null) {
+        if (heap == null) {
             return;
         }
         if (heap.left != null) {
@@ -175,15 +174,15 @@ public class SkewHeap<T extends Comparable<T>> {
      */
     private void print(SkewNode<T> heap, T key, int direction) {
 
-        if(heap != null) {
+        if (heap != null) {
 
-            if(direction==0) {    // heap是根节点
+            if (direction == 0) {    // heap是根节点
                 System.out.printf("%2d is root\n", heap.key);
-            }else {               // heap是分支节点
+            } else {               // heap是分支节点
                 System.out.printf("%2d is %2d's %6s child\n", heap.key, key, direction == 1 ? "right" : "left");
             }
             print(heap.left, heap.key, -1);
-            print(heap.right,heap.key,  1);
+            print(heap.right, heap.key, 1);
         }
     }
 

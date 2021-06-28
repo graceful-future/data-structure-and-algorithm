@@ -1,30 +1,30 @@
 package com.gracefulfuture.data.structure.heap;
 
 /**
-* @description      二项堆测试类
-* @author           chenkun
-* @create           2021/6/28 11:36
-* @version          1.0
-*/
+ * @author chenkun
+ * @version 1.0
+ * @description 二项堆测试类
+ * @create 2021/6/28 11:36
+ */
 public class BinomialHeapTest {
 
     private static final boolean DEBUG = false;
 
     // 共7个 = 1+2+4
-    private static int a[] = {12,  7, 25, 15, 28, 33, 41};
+    private static int a[] = {12, 7, 25, 15, 28, 33, 41};
     // 共13个 = 1+4+8
-    private static int b[] = {18, 35, 20, 42,  9,
-            31, 23,  6, 48, 11,
-            24, 52, 13 };
+    private static int b[] = {18, 35, 20, 42, 9,
+            31, 23, 6, 48, 11,
+            24, 52, 13};
 
 
     // 验证"二项堆的插入操作"
     public static void testInsert() {
-        BinomialHeap<Integer> ha=new BinomialHeap<Integer>();
+        BinomialHeap<Integer> ha = new BinomialHeap<Integer>();
 
         // 二项堆ha
         System.out.printf("== 二项堆(ha)中依次添加: ");
-        for(int i=0; i<a.length; i++) {
+        for (int i = 0; i < a.length; i++) {
             System.out.printf("%d ", a[i]);
             ha.insert(a[i]);
         }
@@ -35,12 +35,12 @@ public class BinomialHeapTest {
 
     // 验证"二项堆的合并操作"
     public static void testUnion() {
-        BinomialHeap<Integer> ha=new BinomialHeap<Integer>();
-        BinomialHeap<Integer> hb=new BinomialHeap<Integer>();
+        BinomialHeap<Integer> ha = new BinomialHeap<Integer>();
+        BinomialHeap<Integer> hb = new BinomialHeap<Integer>();
 
         // 二项堆ha
         System.out.printf("== 二项堆(ha)中依次添加: ");
-        for(int i=0; i<a.length; i++) {
+        for (int i = 0; i < a.length; i++) {
             System.out.printf("%d ", a[i]);
             ha.insert(a[i]);
         }
@@ -50,7 +50,7 @@ public class BinomialHeapTest {
 
         // 二项堆hb
         System.out.printf("== 二项堆(hb)中依次添加: ");
-        for(int i=0; i<b.length; i++) {
+        for (int i = 0; i < b.length; i++) {
             System.out.printf("%d ", b[i]);
             hb.insert(b[i]);
         }
@@ -68,11 +68,11 @@ public class BinomialHeapTest {
 
     // 验证"二项堆的删除操作"
     public static void testDelete() {
-        BinomialHeap<Integer> hb=new BinomialHeap<Integer>();
+        BinomialHeap<Integer> hb = new BinomialHeap<Integer>();
 
         // 二项堆hb
         System.out.printf("== 二项堆(hb)中依次添加: ");
-        for(int i=0; i<b.length; i++) {
+        for (int i = 0; i < b.length; i++) {
             System.out.printf("%d ", b[i]);
             hb.insert(b[i]);
         }
@@ -89,11 +89,11 @@ public class BinomialHeapTest {
 
     // 验证"二项堆的更新(减少)操作"
     public static void testDecrease() {
-        BinomialHeap<Integer> hb=new BinomialHeap<Integer>();
+        BinomialHeap<Integer> hb = new BinomialHeap<Integer>();
 
         // 二项堆hb
         System.out.printf("== 二项堆(hb)中依次添加: ");
-        for(int i=0; i<b.length; i++) {
+        for (int i = 0; i < b.length; i++) {
             System.out.printf("%d ", b[i]);
             hb.insert(b[i]);
         }
@@ -110,11 +110,11 @@ public class BinomialHeapTest {
 
     // 验证"二项堆的更新(减少)操作"
     public static void testIncrease() {
-        BinomialHeap<Integer> hb=new BinomialHeap<Integer>();
+        BinomialHeap<Integer> hb = new BinomialHeap<Integer>();
 
         // 二项堆hb
         System.out.printf("== 二项堆(hb)中依次添加: ");
-        for(int i=0; i<b.length; i++) {
+        for (int i = 0; i < b.length; i++) {
             System.out.printf("%d ", b[i]);
             hb.insert(b[i]);
         }

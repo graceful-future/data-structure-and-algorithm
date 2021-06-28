@@ -1,11 +1,11 @@
 package com.gracefulfuture.data.structure.tree;
 
 /**
-* @description      二叉查找树
-* @author           chenkun
-* @create           2021/6/23 14:35
-* @version          1.0
-*/
+ * @author chenkun
+ * @version 1.0
+ * @description 二叉查找树
+ * @create 2021/6/23 14:35
+ */
 public class BSTree<T extends Comparable<T>> {
 
     private BSTNode<T> mRoot;    // 根结点
@@ -28,7 +28,7 @@ public class BSTree<T extends Comparable<T>> {
         }
 
         public String toString() {
-            return "key:"+key;
+            return "key:" + key;
         }
     }
 
@@ -40,8 +40,8 @@ public class BSTree<T extends Comparable<T>> {
      * 前序遍历"二叉树"
      */
     private void preOrder(BSTNode<T> tree) {
-        if(tree != null) {
-            System.out.print(tree.key+" ");
+        if (tree != null) {
+            System.out.print(tree.key + " ");
             preOrder(tree.left);
             preOrder(tree.right);
         }
@@ -55,9 +55,9 @@ public class BSTree<T extends Comparable<T>> {
      * 中序遍历"二叉树"
      */
     private void inOrder(BSTNode<T> tree) {
-        if(tree != null) {
+        if (tree != null) {
             inOrder(tree.left);
-            System.out.print(tree.key+" ");
+            System.out.print(tree.key + " ");
             inOrder(tree.right);
         }
     }
@@ -71,11 +71,10 @@ public class BSTree<T extends Comparable<T>> {
      * 后序遍历"二叉树"
      */
     private void postOrder(BSTNode<T> tree) {
-        if(tree != null)
-        {
+        if (tree != null) {
             postOrder(tree.left);
             postOrder(tree.right);
-            System.out.print(tree.key+" ");
+            System.out.print(tree.key + " ");
         }
     }
 
@@ -135,7 +134,7 @@ public class BSTree<T extends Comparable<T>> {
         if (tree == null) {
             return null;
         }
-        while(tree.left != null) {
+        while (tree.left != null) {
             tree = tree.left;
         }
         return tree;
@@ -157,7 +156,7 @@ public class BSTree<T extends Comparable<T>> {
             return null;
         }
 
-        while(tree.right != null) {
+        while (tree.right != null) {
             tree = tree.right;
         }
         return tree;
@@ -257,7 +256,7 @@ public class BSTree<T extends Comparable<T>> {
      *     key 插入结点的键值
      */
     public void insert(T key) {
-        BSTNode<T> z=new BSTNode<T>(key,null,null,null);
+        BSTNode<T> z = new BSTNode<T>(key, null, null, null);
 
         // 如果新建结点失败，则返回。
         if (z != null) {
@@ -276,7 +275,7 @@ public class BSTree<T extends Comparable<T>> {
         BSTNode<T> x = null;
         BSTNode<T> y = null;
 
-        if ((z.left == null) || (z.right == null)){
+        if ((z.left == null) || (z.right == null)) {
             y = z;
         } else {
             y = successor(z);
@@ -292,11 +291,9 @@ public class BSTree<T extends Comparable<T>> {
         }
         if (y.parent == null) {
             bst.mRoot = x;
-        }
-        else if (y == y.parent.left) {
+        } else if (y == y.parent.left) {
             y.parent.left = x;
-        }
-        else {
+        } else {
             y.parent.right = x;
         }
 
@@ -328,7 +325,7 @@ public class BSTree<T extends Comparable<T>> {
      * 销毁二叉树
      */
     private void destroy(BSTNode<T> tree) {
-        if (tree==null) {
+        if (tree == null) {
             return;
         }
 
@@ -356,15 +353,15 @@ public class BSTree<T extends Comparable<T>> {
      */
     private void print(BSTNode<T> tree, T key, int direction) {
 
-        if(tree != null) {
+        if (tree != null) {
 
-            if(direction == 0) {   // tree是根节点
+            if (direction == 0) {   // tree是根节点
                 System.out.printf("%2d is root\n", tree.key);
             } else {               // tree是分支节点
                 System.out.printf("%2d is %2d's %6s child\n", tree.key, key, direction == 1 ? "right" : "left");
             }
             print(tree.left, tree.key, -1);
-            print(tree.right,tree.key,  1);
+            print(tree.right, tree.key, 1);
         }
     }
 

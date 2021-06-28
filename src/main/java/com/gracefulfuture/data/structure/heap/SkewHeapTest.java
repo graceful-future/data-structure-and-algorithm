@@ -1,22 +1,22 @@
 package com.gracefulfuture.data.structure.heap;
 
 /**
-* @description      斜堆测试类
-* @author           chenkun
-* @create           2021/6/23 14:27
-* @version          1.0
-*/
+ * @author chenkun
+ * @version 1.0
+ * @description 斜堆测试类
+ * @create 2021/6/23 14:27
+ */
 public class SkewHeapTest {
 
     public static void main(String[] args) {
 
-        int a[]= {10,40,24,30,36,20,12,16};
-        int b[]= {17,13,11,15,19,21,23};
-        SkewHeap<Integer> ha=new SkewHeap<Integer>();
-        SkewHeap<Integer> hb=new SkewHeap<Integer>();
+        int a[] = {10, 40, 24, 30, 36, 20, 12, 16};
+        int b[] = {17, 13, 11, 15, 19, 21, 23};
+        SkewHeap<Integer> ha = new SkewHeap<Integer>();
+        SkewHeap<Integer> hb = new SkewHeap<Integer>();
 
         System.out.printf("== 斜堆(ha)中依次添加: ");
-        for(int i = 0; i < a.length; i++) {
+        for (int i = 0; i < a.length; i++) {
             System.out.printf("%d ", a[i]);
             ha.insert(a[i]);
         }
@@ -25,7 +25,7 @@ public class SkewHeapTest {
 
 
         System.out.printf("\n== 斜堆(hb)中依次添加: ");
-        for(int i = 0; i < b.length; i++) {
+        for (int i = 0; i < b.length; i++) {
             System.out.printf("%d ", b[i]);
             hb.insert(b[i]);
         }

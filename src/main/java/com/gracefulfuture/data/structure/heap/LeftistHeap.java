@@ -1,11 +1,11 @@
 package com.gracefulfuture.data.structure.heap;
 
 /**
-* @description      左倾堆
-* @author           chenkun
-* @create           2021/6/23 13:59
-* @version          1.0
-*/
+ * @author chenkun
+ * @version 1.0
+ * @description 左倾堆
+ * @create 2021/6/23 13:59
+ */
 public class LeftistHeap<T extends Comparable<T>> {
 
     private LeftistNode<T> mRoot;    // 根结点
@@ -24,7 +24,7 @@ public class LeftistHeap<T extends Comparable<T>> {
         }
 
         public String toString() {
-            return "key:"+key;
+            return "key:" + key;
         }
     }
 
@@ -36,8 +36,8 @@ public class LeftistHeap<T extends Comparable<T>> {
      * 前序遍历"左倾堆"
      */
     private void preOrder(LeftistNode<T> heap) {
-        if(heap != null) {
-            System.out.print(heap.key+" ");
+        if (heap != null) {
+            System.out.print(heap.key + " ");
             preOrder(heap.left);
             preOrder(heap.right);
         }
@@ -51,9 +51,9 @@ public class LeftistHeap<T extends Comparable<T>> {
      * 中序遍历"左倾堆"
      */
     private void inOrder(LeftistNode<T> heap) {
-        if(heap != null) {
+        if (heap != null) {
             inOrder(heap.left);
-            System.out.print(heap.key+" ");
+            System.out.print(heap.key + " ");
             inOrder(heap.right);
         }
     }
@@ -66,11 +66,10 @@ public class LeftistHeap<T extends Comparable<T>> {
      * 后序遍历"左倾堆"
      */
     private void postOrder(LeftistNode<T> heap) {
-        if(heap != null)
-        {
+        if (heap != null) {
             postOrder(heap.left);
             postOrder(heap.right);
-            System.out.print(heap.key+" ");
+            System.out.print(heap.key + " ");
         }
     }
 
@@ -82,16 +81,16 @@ public class LeftistHeap<T extends Comparable<T>> {
      * 合并"左倾堆x"和"左倾堆y"
      */
     private LeftistNode<T> merge(LeftistNode<T> x, LeftistNode<T> y) {
-        if(x == null){
+        if (x == null) {
             return y;
         }
-        if(y == null){
+        if (y == null) {
             return x;
         }
 
         // 合并x和y时，将x作为合并后的树的根；
         // 这里的操作是保证: x的key < y的key
-        if(x.key.compareTo(y.key) > 0) {
+        if (x.key.compareTo(y.key) > 0) {
             LeftistNode<T> tmp = x;
             x = y;
             y = tmp;
@@ -126,7 +125,7 @@ public class LeftistHeap<T extends Comparable<T>> {
      *     key 插入结点的键值
      */
     public void insert(T key) {
-        LeftistNode<T> node = new LeftistNode<T>(key,null,null);
+        LeftistNode<T> node = new LeftistNode<T>(key, null, null);
 
         // 如果新建结点失败，则返回。
         if (node != null) {
@@ -158,7 +157,7 @@ public class LeftistHeap<T extends Comparable<T>> {
      * 销毁左倾堆
      */
     private void destroy(LeftistNode<T> heap) {
-        if (heap==null) {
+        if (heap == null) {
             return;
         }
         if (heap.left != null) {
@@ -167,7 +166,7 @@ public class LeftistHeap<T extends Comparable<T>> {
         if (heap.right != null) {
             destroy(heap.right);
         }
-        heap=null;
+        heap = null;
     }
 
     public void clear() {
@@ -185,15 +184,15 @@ public class LeftistHeap<T extends Comparable<T>> {
      */
     private void print(LeftistNode<T> heap, T key, int direction) {
 
-        if(heap != null) {
+        if (heap != null) {
 
-            if(direction==0) {    // heap是根节点
+            if (direction == 0) {    // heap是根节点
                 System.out.printf("%2d(%d) is root\n", heap.key, heap.npl);
             } else {               // heap是分支节点
                 System.out.printf("%2d(%d) is %2d's %6s child\n", heap.key, heap.npl, key, direction == 1 ? "right" : "left");
             }
             print(heap.left, heap.key, -1);
-            print(heap.right,heap.key,  1);
+            print(heap.right, heap.key, 1);
         }
     }
 

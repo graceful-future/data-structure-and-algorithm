@@ -9,7 +9,6 @@ import java.util.List;
  * @description 二叉堆-最小堆
  * @create 2021/6/23 11:06
  */
-
 public class MinHeap<T extends Comparable<T>> {
 
     private List<T> mHeap;        // 存放堆的数组
@@ -35,14 +34,14 @@ public class MinHeap<T extends Comparable<T>> {
         while (l <= end) {
             int cmp = mHeap.get(l).compareTo(mHeap.get(l + 1));
             // "l"是左孩子，"l+1"是右孩子
-            if (l < end && cmp > 0){
+            if (l < end && cmp > 0) {
                 l++;        // 左右两孩子中选择较小者，即mHeap[l+1]
             }
 
             cmp = tmp.compareTo(mHeap.get(l));
-            if (cmp <= 0){
+            if (cmp <= 0) {
                 break;        //调整结束
-            }else{
+            } else {
                 mHeap.set(c, mHeap.get(l));
                 c = l;
                 l = 2 * l + 1;
@@ -60,13 +59,13 @@ public class MinHeap<T extends Comparable<T>> {
      */
     public int remove(T data) {
         // 如果"堆"已空，则返回-1
-        if (mHeap.isEmpty()){
+        if (mHeap.isEmpty()) {
             return -1;
         }
 
         // 获取data在数组中的索引
         int index = mHeap.indexOf(data);
-        if (index == -1){
+        if (index == -1) {
             return index;
         }
 
@@ -74,7 +73,7 @@ public class MinHeap<T extends Comparable<T>> {
         mHeap.set(index, mHeap.get(size - 1));// 用最后元素填补
         mHeap.remove(size - 1);                // 删除最后的元素
 
-        if (mHeap.size() > 1){
+        if (mHeap.size() > 1) {
             filterdown(index, mHeap.size() - 1);    // 从index号位置开始自上向下调整为最小堆
         }
 
@@ -96,9 +95,9 @@ public class MinHeap<T extends Comparable<T>> {
 
         while (c > 0) {
             int cmp = mHeap.get(p).compareTo(tmp);
-            if (cmp <= 0){
+            if (cmp <= 0) {
                 break;
-            }else{
+            } else {
                 mHeap.set(c, mHeap.get(p));
                 c = p;
                 p = (p - 1) / 2;
