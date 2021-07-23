@@ -1,5 +1,7 @@
 package com.gracefulfuture.data.structure.set;
 
+import com.gracefulfuture.algorithm.distinct.Student;
+
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Properties;
@@ -16,26 +18,33 @@ public class HashSetTest {
         //HashSet底层使用HashMap作为数据结构，由于HashMap不能
         //保证存储的元素有序性，所以HashSet中元素是无序的。
         //可以保存值为null的元素,元素不可重复
-        HashSet<String> hashSet = new HashSet<>();
-        boolean flag1 = hashSet.add("hello");
-        boolean flag2 = hashSet.add("hello");
-        System.out.println(flag1);
-        System.out.println(flag2);
+//        HashSet<String> hashSet = new HashSet<>();
+//        boolean flag1 = hashSet.add("hello");
+//        boolean flag2 = hashSet.add("hello");
+//        System.out.println(flag1);
+//        System.out.println(flag2);
 //        hashSet.add("world");
 //        hashSet.add("welcome");
 //        hashSet.add("age");
 //        System.out.println(hashSet.size());
 //        System.out.println(hashSet);
 //        hashSet.forEach(e -> System.out.println(e));
-//        HashSet<Integer> hashSet2  = new HashSet<>();
-//        hashSet2.add(5);
-//        hashSet2.add(1);
-//        hashSet2.add(2);
-//        hashSet2.add(4);
-//        hashSet2.add(3);
-//        hashSet2.add(5);
+        HashSet<Integer> hashSet2  = new HashSet<>();
+        hashSet2.add(new Integer(100));
+        hashSet2.add(1);
+        hashSet2.add(2);
+        hashSet2.add(4);
+        hashSet2.add(3);
+        hashSet2.add(new Integer(100));
 //        hashSet2.add(null);
 //        hashSet2.add(null);
-//        hashSet2.forEach(e -> System.out.println(e));
+        hashSet2.forEach(e -> System.out.println(e));
+        HashSet<Student> hashSet3 = new HashSet<>();
+        Student student1 = new Student("Lili",20);
+        Student student2 = new Student("Lili",22);
+//        Student student2 = student1;
+        hashSet3.add(student1);
+        hashSet3.add(student2);
+        System.out.println(hashSet3);
     }
 }
