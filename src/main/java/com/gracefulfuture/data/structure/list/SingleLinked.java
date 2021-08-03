@@ -1,4 +1,4 @@
-package com.gracefulfuture.data.structure;
+package com.gracefulfuture.data.structure.list;
 
 /**
 * @description      单向链表

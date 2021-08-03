@@ -1,7 +1,4 @@
-package com.gracefulfuture.data.structure;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.gracefulfuture.data.structure.list;
 
 /**
 * @description      单链表测试类

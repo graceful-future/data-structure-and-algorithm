@@ -1,4 +1,4 @@
-package com.gracefulfuture.data.structure;
+package com.gracefulfuture.data.structure.stack;
 
 import java.util.Stack;
 

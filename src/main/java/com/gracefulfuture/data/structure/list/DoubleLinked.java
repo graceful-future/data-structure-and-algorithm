@@ -1,4 +1,4 @@
-package com.gracefulfuture.data.structure;
+package com.gracefulfuture.data.structure.list;
 
 /**
 * @description      双链表类
@@ -100,7 +100,7 @@ public class DoubleLinked<T> {
     * @author       chenkun
     * @param		index 节点的索引
     * @date         2021/5/25 10:27
-    * @return		com.gracefulfuture.data.structure.DoubleLinked<T>.DNode
+    * @return		com.gracefulfuture.data.structure.list.DoubleLinked<T>.DNode
     */
     private DNode getNode(int index){
         if (index < 0 || index >= nodeCount){
