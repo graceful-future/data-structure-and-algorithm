@@ -24,18 +24,28 @@ public class Element implements Delayed {
 
     @Override
     public long getDelay(TimeUnit unit) {
-        return System.currentTimeMillis() - delay;
+        return unit.convert(delay - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
     }
 
     @Override
     public int compareTo(Delayed o) {
-        Element element = (Element) o;
-        long diff = this.delay - element.delay;
-        if(diff >= 0){
-            return 1;
-        }else{
-            return -1;
+        if (o == this) {
+            return 0;
         }
+        Element element = (Element) o;
+        long diff = this.getDelay(TimeUnit.MILLISECONDS) - element.getDelay(TimeUnit.MILLISECONDS);
+        if (diff > 0) {
+            return 1;
+        } else if (diff < 0) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
+    public void printInfo() {
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+        System.out.println("元素" + getName() + "在" + seconds + "秒被删除");
     }
 
     public String getName() {
