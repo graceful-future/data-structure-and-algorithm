@@ -34,10 +34,24 @@ public class Student {
     }
 
     @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return Objects.equals(name, student.name);
+        return name.equalsIgnoreCase(student.name) && age == student.age;
+    }
+
+    @Override
+    public int hashCode() {
+        int nameHash = name.toUpperCase().hashCode();
+        return nameHash ^ age;
     }
 }

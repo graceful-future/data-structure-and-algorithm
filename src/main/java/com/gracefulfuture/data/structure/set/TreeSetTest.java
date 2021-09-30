@@ -14,6 +14,7 @@ public class TreeSetTest {
         //保存的元素在其内部按自然顺序排序,且元素不能为null。
         //元素不可重复
         TreeSet<Integer> treeSet = new TreeSet<>();
+//        treeSet.add(null);
 //        treeSet.add(10);
 //        treeSet.add(8);
 //        treeSet.add(15);

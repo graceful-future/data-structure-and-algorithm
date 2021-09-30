@@ -13,7 +13,7 @@ import java.util.Map;
 public class HashTableTest {
     public static void main(String[] args) {
         //使用哈希表作为存储结构，多线程安全，不允许null键和值
-        //元素不可重复且无须
+        //元素不可重复且无序
         Hashtable<String,Object> hashtable = new Hashtable<>();
         hashtable.put("first","Huawei");
         hashtable.put("second","Apple");
